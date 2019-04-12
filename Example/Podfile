@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'YSObserver_Example' do
+  pod 'YSObserver', :path => '../'
+
+  target 'YSObserver_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
