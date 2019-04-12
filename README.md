@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/YSObserver.svg?style=flat)](https://cocoapods.org/pods/YSObserver)
 [![Platform](https://img.shields.io/cocoapods/p/YSObserver.svg?style=flat)](https://cocoapods.org/pods/YSObserver)
 
+一个轻量级的通过Block执行通知回调的对象KVO扩展，整个库一共200行代码。
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
