@@ -15,7 +15,7 @@ static void _ys_addObserver(NSObject *observable, NSObject *observer, NSString *
 static void _ys_removeObserver(NSObject *observable, NSObject *observer, NSString *keyPath);
 static void _ys_removeAllObserver(NSObject *observable, NSString *keyPath);
 static void _ys_observe(NSString *keyPath, id object, NSDictionary<NSKeyValueChangeKey,id> *change, void *context);
-
+static BOOL _ys_hasObserver(NSObject *observable, NSObject *observer, NSString *keyPath);
 //接口实现部分
 @implementation NSObject (YSObserver)
 
@@ -38,6 +38,12 @@ static void _ys_observe(NSString *keyPath, id object, NSDictionary<NSKeyValueCha
 {
     _ys_removeAllObserver(self, keyPath);
 }
+
+-(BOOL)ys_hasObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath
+{
+    return _ys_hasObserver(self, observer, keyPath);
+}
+
 
 @end
 
@@ -177,12 +183,7 @@ static void _ys_removeAllObserver(NSObject *observable, NSString *keyPath)
 
 static void _ys_observe(NSString *keyPath, id object, NSDictionary<NSKeyValueChangeKey,id> *change, void *context)
 {
-    if (context == NULL)
-        return;
-    
     _YSKeyPathContext *keyPathContext = (__bridge _YSKeyPathContext *)(context);
-    if (keyPathContext.observable != object)
-        return;
     
     id newVal = change[NSKeyValueChangeNewKey];
     id oldVal = change[NSKeyValueChangeOldKey];
@@ -199,4 +200,20 @@ static void _ys_observe(NSString *keyPath, id object, NSDictionary<NSKeyValueCha
         else
             [keyPathContext.observerBlocks removeObjectAtIndex:i];
     }
+}
+
+static BOOL _ys_hasObserver(NSObject *observable, NSObject *observer, NSString *keyPath)
+{
+    NSMutableDictionary *dict = objc_getAssociatedObject(observable, YSOBSERVER_KEY);
+    if (dict != nil){
+        _YSKeyPathContext *keyPathContext = dict[keyPath];
+        if (keyPathContext != nil){
+            for (_YSObserverBlock *observerBlock in keyPathContext.observerBlocks){
+                if (observerBlock.observer == observer)
+                    return YES;
+            }
+        }
+    }
+    
+    return NO;
 }

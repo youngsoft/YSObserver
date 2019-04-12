@@ -56,6 +56,15 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)ys_removeAllObserverForKeyPath:(NSString *)keyPath;
 
 
+/**
+ 判断某个观察者是否存在
+
+ @param observer 观察者对象
+ @param keyPath 观察的keyPath
+ @return 如果存在则返回YES,否则返回NO
+ */
+-(BOOL)ys_hasObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath;
+
 @end
 
 NS_ASSUME_NONNULL_END
