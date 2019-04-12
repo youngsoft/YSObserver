@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C0CB6A6258EEFA7F686185D /* Pods_YSObserver_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929478C3F70AD31CA03AB83F /* Pods_YSObserver_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,9 +20,10 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		6AD2BC3F464BC8799CA3AB8B /* libPods-YSObserver_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24172A69BBC36537A9F51E0D /* libPods-YSObserver_Example.a */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		DE7CE6EA2276E49E332544FA /* Pods_YSObserver_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 897A1BCC2077225F70931A1B /* Pods_YSObserver_Example.framework */; };
+		DE2E82D8C67C844731409AFE /* libPods-YSObserver_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C682AC03B736CAD1369D720 /* libPods-YSObserver_Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		01759F499DCEACE8B0834791 /* Pods-YSObserver_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSObserver_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-YSObserver_Example/Pods-YSObserver_Example.release.xcconfig"; sourceTree = "<group>"; };
+		24172A69BBC36537A9F51E0D /* libPods-YSObserver_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YSObserver_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F77E6E8FDDFB079178C260 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3E37A42BBDB6D82DB08F121F /* Pods-YSObserver_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSObserver_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YSObserver_Tests/Pods-YSObserver_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		49D5E2A772E4D8ED2392BB72 /* Pods-YSObserver_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSObserver_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YSObserver_Example/Pods-YSObserver_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -62,9 +63,8 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7992D5BBE316E6634BC1FDC7 /* YSObserver.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = YSObserver.podspec; path = ../YSObserver.podspec; sourceTree = "<group>"; };
+		7C682AC03B736CAD1369D720 /* libPods-YSObserver_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YSObserver_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		897A1BCC2077225F70931A1B /* Pods_YSObserver_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YSObserver_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		929478C3F70AD31CA03AB83F /* Pods_YSObserver_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YSObserver_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C443E5A521353F9F49159E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		BA4D21E8C9231704C7E6B4FF /* Pods-YSObserver_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSObserver_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YSObserver_Tests/Pods-YSObserver_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,7 +77,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				DE7CE6EA2276E49E332544FA /* Pods_YSObserver_Example.framework in Frameworks */,
+				6AD2BC3F464BC8799CA3AB8B /* libPods-YSObserver_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +88,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				4C0CB6A6258EEFA7F686185D /* Pods_YSObserver_Tests.framework in Frameworks */,
+				DE2E82D8C67C844731409AFE /* libPods-YSObserver_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,8 +123,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				897A1BCC2077225F70931A1B /* Pods_YSObserver_Example.framework */,
-				929478C3F70AD31CA03AB83F /* Pods_YSObserver_Tests.framework */,
+				24172A69BBC36537A9F51E0D /* libPods-YSObserver_Example.a */,
+				7C682AC03B736CAD1369D720 /* libPods-YSObserver_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

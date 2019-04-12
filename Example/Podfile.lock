@@ -1,0 +1,16 @@
+PODS:
+  - YSObserver (0.1.0)
+
+DEPENDENCIES:
+  - YSObserver (from `../`)
+
+EXTERNAL SOURCES:
+  YSObserver:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  YSObserver: 6662284f63a6dd3df214c9279775ecc74cb1b72d
+
+PODFILE CHECKSUM: fd3c57dbc69632f8f3bfbe7aa692fb654d6d25fe
+
+COCOAPODS: 1.1.1

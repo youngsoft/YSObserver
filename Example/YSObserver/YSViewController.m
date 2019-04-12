@@ -7,6 +7,8 @@
 //
 
 #import "YSViewController.h"
+#import "NSObject+YSObserver.h"
+
 
 @interface YSViewController ()
 
@@ -18,6 +20,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self.view ys_addObserver:self forKeyPath:@"frame" withBlock:^(id  _Nonnull newVal, id  _Nonnull oldVal) {
+        
+        NSLog(@"self.view's frame is from %@ to %@", oldVal, newVal);
+        
+    }];
+    
+    
+    [self.view ys_addObserver:self forKeyPath:@"frame" withOnceBlock:^(id  _Nonnull newVal, id  _Nonnull oldVal) {
+        
+        NSLog(@"once: self.view's frame is from %@ to %@", oldVal, newVal);
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning

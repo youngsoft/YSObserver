@@ -22,7 +22,7 @@ pod 'YSObserver'
 
 ## Author
 
-youngsoft, oubaiquan@meituan.com
+youngsoft, obq0387_cn@sina.com
 
 ## License
 
