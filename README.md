@@ -11,6 +11,51 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## How to use
+
+
+* Normally KVO:
+
+```
+
+@interface Observer:NSObject
+
+@end
+
+@implementation Observer
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+	if ([keyPath isEqualToString:@"frame"]){
+		NSLog(@"the frame=%@", change[NSKeyValueChangeNewKey]);
+    }
+}
+
+@end
+
+
+UIView *view = [UIView new];
+Observer *observer = [Observer new];
+
+[view addObserver:observer forKeyPath:@"frame"  options:NSKeyValueObservingOptionNew  context:NULL];
+view.frame = CGRectZero;
+
+```
+
+* YSObserver 
+
+```
+
+UIView *view = [UIView new];
+[view ys_addObserver:anyObject forKeyPath:@"frame" withBlock:^(id newVal, id OldVal){
+
+	NSLog(@"the frame=%@", newVal);
+}];
+
+```
+
+
+
 ## Requirements
 
 ## Installation
