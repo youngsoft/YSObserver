@@ -67,6 +67,10 @@
         XCTAssert([newVal isEqualToString:@"b"]);
     }];
     
+    [observable ys_addObserver:self forKeyPath:@"name" times:2 withBlock:^(id  _Nonnull newVal, id  _Nonnull oldVal) {
+        
+        XCTAssert([newVal isEqualToString:@"b"] ||[newVal isEqualToString:@"c"] );
+    }];
     
     OBserver  *observer1 = [OBserver new];
     

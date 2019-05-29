@@ -11,7 +11,7 @@
 
 #define YSOBSERVER_KEY "ys_observerkey"
 
-static void _ys_addObserver(NSObject *observable, NSObject *observer, NSString *keyPath, BOOL once, void(^block)(id, id) );
+static void _ys_addObserver(NSObject *observable, NSObject *observer, NSString *keyPath, NSInteger times, void(^block)(id, id) );
 static void _ys_removeObserver(NSObject *observable, NSObject *observer, NSString *keyPath);
 static void _ys_removeAllObserver(NSObject *observable, NSString *keyPath);
 static void _ys_observe(NSString *keyPath, id object, NSDictionary<NSKeyValueChangeKey,id> *change, void *context);
@@ -21,13 +21,19 @@ static BOOL _ys_hasObserver(NSObject *observable, NSObject *observer, NSString *
 
 -(void)ys_addObserver:(NSObject*)observer forKeyPath:(NSString *)keyPath withBlock:(void(^)(id, id))block
 {
-    _ys_addObserver(self, observer, keyPath, NO, block);
+    _ys_addObserver(self, observer, keyPath, -1, block);
 }
 
 -(void)ys_addObserver:(NSObject*)observer forKeyPath:(NSString *)keyPath withOnceBlock:(void(^)(id, id))block
 {
-    _ys_addObserver(self, observer, keyPath, YES, block);
+    _ys_addObserver(self, observer, keyPath, 1, block);
 }
+
+-(void)ys_addObserver:(NSObject*)observer forKeyPath:(NSString *)keyPath times:(NSInteger)times withBlock:(void(^)(id newVal, id oldVal))block
+{
+    _ys_addObserver(self, observer, keyPath, times, block);
+}
+
 
 -(void)ys_removeObserver:(NSObject*)observer forKeyPath:(NSString *)keyPath
 {
@@ -80,7 +86,7 @@ static BOOL _ys_hasObserver(NSObject *observable, NSObject *observer, NSString *
 
 @property(nonatomic, weak) NSObject *observer;
 @property(nonatomic, copy) void (^block)(id, id);
-@property(nonatomic, assign) BOOL once;
+@property(nonatomic, assign) NSInteger times;
 
 @end
 
@@ -110,7 +116,7 @@ static BOOL _ys_hasObserver(NSObject *observable, NSObject *observer, NSString *
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////
-static void _ys_addObserver(NSObject *observable, NSObject *observer, NSString *keyPath, BOOL once, void(^block)(id, id) )
+static void _ys_addObserver(NSObject *observable, NSObject *observer, NSString *keyPath, NSInteger times, void(^block)(id, id) )
 {
     _YSKeyPathContext *keyPathContext = nil;
     
@@ -135,7 +141,7 @@ static void _ys_addObserver(NSObject *observable, NSObject *observer, NSString *
     _YSObserverBlock *observerBlock = [_YSObserverBlock new];
     observerBlock.observer = observer;
     observerBlock.block = block;
-    observerBlock.once = once;
+    observerBlock.times = times;
     [keyPathContext.observerBlocks addObject:observerBlock];
    
 }
@@ -192,10 +198,16 @@ static void _ys_observe(NSString *keyPath, id object, NSDictionary<NSKeyValueCha
     for (int i = count - 1; i >= 0; i--){
         _YSObserverBlock *observerBlock = keyPathContext.observerBlocks[i];
         if (observerBlock.observer != nil){
-            if (observerBlock.block != nil)
+            if (observerBlock.block != nil && observerBlock.times != 0)
                 observerBlock.block(newVal, oldVal);
-            if (observerBlock.once)
-                [keyPathContext.observerBlocks removeObjectAtIndex:i];
+            if (observerBlock.times >= 0)
+            {
+                observerBlock.times--;
+                if (observerBlock.times <= 0)
+                {
+                    [keyPathContext.observerBlocks removeObjectAtIndex:i];
+                }
+            }
         }
         else
             [keyPathContext.observerBlocks removeObjectAtIndex:i];

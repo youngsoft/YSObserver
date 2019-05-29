@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- 对当前对象的keyPath添加观察者
+ 对当前对象的keyPath添加观察者,这个方法是下面带次数方法的简化版本
 
  @param observer 观察者对象，这个参数只用于区分不同的观察者，以及支持多个观察者用。
  @param keyPath 观察的属性路径
@@ -30,13 +30,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- 对当前对象的keyPath添加观察者，并只执行一次观察，调用后会取消观察
+ 对当前对象的keyPath添加观察者，并只执行一次观察，调用后会取消观察，这个方法是下面带次数方法的简化版本
 
  @param observer 观察者对象，这个参数只用于区分不同的观察者，以及支持多个观察者用。
  @param keyPath 观察的属性路径
  @param block 当被观察的keyPath的值发生变化时会调用此block。block中的newObj和oldObj分别代表被观察的属性的新值和老值。
  */
 -(void)ys_addObserver:(NSObject*)observer forKeyPath:(NSString *)keyPath withOnceBlock:(void(^)(id newVal, id oldVal))block;
+
+
+/**
+ 对当前对象的keyPath添加观察者，并只执行times次观察，调用后会取消观察
+
+ @param observer 观察者对象，这个参数只用于区分不同的观察者，以及支持多个观察者用。
+ @param keyPath 观察的属性路径
+ @param times 观察的次数，如果是-1则是永久观察
+ @param block 当被观察的keyPath的值发生变化时会调用此block。block中的newObj和oldObj分别代表被观察的属性的新值和老值。
+ */
+-(void)ys_addObserver:(NSObject*)observer forKeyPath:(NSString *)keyPath times:(NSInteger)times withBlock:(void(^)(id newVal, id oldVal))block;
+
 
 
 /**
